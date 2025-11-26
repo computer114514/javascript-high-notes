@@ -6,7 +6,7 @@
 
 函数的this关键字在js中的表现略有不同，此外，在严格模式和非严格模式之间也有差别
 
-函数的调用方式决定了this的值（执行上下文创建时确定）
+**函数的调用方式决定了this的值**（执行上下文创建时确定）
 
 this是函数运行时自动生成的一个内部对象，只能在函数内部使用，总是指向**调用它的对象**
 
@@ -35,7 +35,7 @@ baz();//baz调用位置
 
 ## 二，绑定规则
 
-this的值不同取决于不同场合
+this的值**不同**取决于不同场合
 
 >默认绑定
 >
@@ -43,7 +43,7 @@ this的值不同取决于不同场合
 >
 >new绑定
 >
->显示绑定
+>显式绑定
 
 ### 默认绑定
 
@@ -57,7 +57,7 @@ function person(){
 console.log(person())//jenny
 ~~~
 
-调用的对象位于window，所以this指向window
+调用的对象位于**window**，所以this指向window
 
 Attention：严格模式下，this指向undefined，非window
 
@@ -65,7 +65,7 @@ Attention：严格模式下，this指向undefined，非window
 
 ### 隐式绑定
 
-函数被某个对象调用，this就指向这个**上级对象**
+函数被某个对象**调用**，this就指向这个**上级对象**
 
 ~~~js
 function test(){
@@ -97,7 +97,7 @@ o.b.fn()
 
 ### new绑定
 
-new一个对象，这时this指向这个实例对象
+**new**一个**对象**，这时this**指向这个实例对象**
 
 ~~~js
 function test(){
@@ -109,7 +109,7 @@ obj.x//1
 //这说明，obj和this等价，说明this指向了obj
 ~~~
 
-new过程遇到return一个对象，this指向return的这个对象
+new过程遇到**return**一个对象，this**指向return的这个对象**
 
 ~~~js
 function fn(){
@@ -121,7 +121,7 @@ console.log(a.user)//undefined
 //有return存在，this指向return的这个对象
 ~~~
 
-返回一个简单类型（非对象）,this还是指向实例
+例外：返回一个简单类型（非对象）,this还是指向实例
 
 ~~~js
 function fn(){
@@ -134,7 +134,7 @@ console.log(a.user)//xxx
 
 ### 显式修改
 
-apply(),call(),bind()是函数的一个方法，作用是改变函数的调用对象。
+apply(),call(),bind()是函数的一个方法，作用是**改变函数的调用对象**。
 
 ~~~js
 var x=0
@@ -192,14 +192,16 @@ console.log(example.a)//4
 let bar=obj1.foo.bind(obj2)
 bar(2)
 console.log(obj2.a)//2
+//这是显式绑定
 
 let baz=new bar(3)
 console.log(obj1.a)//2
 console.log(baz.a)//3
+//硬绑定到baz中
 ~~~
 
 所以->绑定this的时候
 
-**<u>new>显式>隐式>模式</u>**
+**<u>new>显式>隐式>默认</u>**
 
 这样的优先级
