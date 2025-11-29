@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding:0;
+            margin:0
+        }
+        div{
+            height:350px;
+            width: 600px;
+            background-color:lightgray;
+            padding:10px;
+            margin:0 auto;
+        }
+        li{
+            line-height:50px;
+            text-align:center;
+            color:black;
+            font-size:30px;
+            list-style:none;
+            width:600px;
+            height:150px;
+            margin:5px 0;
+            background-color:orange;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <li></li>
+        <li></li>
+        <p style="margin:0 auto;text-align:center;font-size:24px;"></p>
+    </div>
+    <script>
+        let CreateInformation=function(breakfast,lunch,dinner){
+            this.breakfast=breakfast;
+            this.lunch=lunch;
+            this.dinner=dinner;
+        };
+        CreateInformation.prototype.ask=function(){
+            return 'what you eat today?'
+        };
+        let p1=new CreateInformation('包子','火锅','泡面');
+        //规范问题，构造函数名称首字母大写
+        //构造函数要用new来调用，不然会报错，因为没有返回值
+        let p2=new CreateInformation('小笼包','米饭','奶茶');
+        p1.ask();
+        p2.ask();
+        console.log(p1);
+        console.log(p2);
+        let li=document.querySelectorAll('li');
+        // let li=document.getElementsByTagName('li');
+        let p=document.getElementsByTagName('p')[0];
+        // let p=document.getElementsByTagName('p');
+        //返回的是类数组对象，需要加[0]才能知道是哪个p标签，因为p没有innerHTML属性
+
+        li[0].innerHTML=`早餐：${p1.breakfast}</br>午餐：${p1.lunch}<br/>晚餐：${p1.dinner}`
+        li[1].innerHTML=`早餐：${p2.breakfast}</br>午餐：${p2.lunch}<br/>晚餐：${p2.dinner}`
+        p.innerHTML=`${p1.ask()}`;
+    </script>
+</body>
+</html>

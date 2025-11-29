@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const foo=function(i){
+            var a = "Hello";
+            var b = function privateB() {};
+            function c(){}
+        }
+        foo(10);
+        //好，分析function时创建的执行上下文
+        //1，创建对象VO
+        // {
+        //     a:undefined,
+        //     b:undefined,
+        //     c=:function c(){},
+        //     arguments:{0:10,length:1}
+        //}
+        //2，创建作用域链
+        //3，this指向绑定
+        //然后是执行阶段
+        //1，先给变量赋值
+        //2，处理函数表达式
+        //3，按顺序执行代码
+    </script>
+</body>
+</html>
